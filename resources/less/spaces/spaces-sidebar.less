@@ -1,0 +1,156 @@
+@sidebarWidth: 275px;
+@sidebarClosedWidth: 35px;
+.spaces-sidebar {
+  width: @sidebarWidth;
+  transition: all 300ms ease-out;
+  padding: 10px;
+  float: left;
+  position: relative;
+
+  &.hidden {
+    width: @sidebarClosedWidth;
+  }
+
+  .showHide {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    cursor: pointer;
+    font-size: 18px;
+    color: @textLight;
+
+    &.disabled {
+      cursor: default;
+      color: @lightGray;
+    }
+  }
+
+  h2 {
+    font-size: 18px;
+    color: @text;
+    margin-top: 0;
+    padding-bottom: 10px;
+    margin-bottom: 10px;
+    border-bottom: 1px solid @lighterGray;
+  }
+
+  .spaces-sidebar-menu {
+    width: @sidebarWidth - 20;
+    overflow: hidden;
+    opacity: 1;
+    transition: opacity 300ms ease-out;
+
+    &.hide {
+      opacity: 0;
+    }
+  }
+
+  .ui-accordion {
+    width: @sidebarWidth - 20px;
+
+    .ui-accordion-header {
+      width: inherit;
+      a {
+          background-color: @tcBlue;
+          color: #fff;
+      }
+    }
+    .ui-accordion-content {
+      margin-top: 0;
+      overflow: hidden;
+      padding: 0 0 0 0;
+      width: @sidebarWidth - 30px;
+
+      .select-items {
+        border-bottom: 1px #dedede solid;
+        display: block;
+        font-family: 'roboto_condensedregular', 'Open Sans', 'Montserrat', HelveticaNeue, 'Helvetica Neue', Helvetica, Arial, sans-serif;
+        padding: 2px 0 2px 0;
+
+        .select-add {
+          color: @tcGreen;
+          float:right;
+          padding-left: 5px;
+        }
+        .select-delete {
+          color: @tcOrange;
+          float:right;
+          padding-left: 5px;
+        }
+        .select-name {
+          float:left;
+          margin:0 0 0 5px;
+          width: @sidebarWidth - 40px;
+        }
+        .select-value {
+          float:left;
+          margin:0 0 0 10px;
+          color: @tcOrange;
+          width: @sidebarWidth - 40px;
+        }
+      }
+      .request-button {
+        border-top-left-radius: 0px;
+        border-top-right-radius: 0px;
+        border-bottom-left-radius: 0px;
+        border-bottom-right-radius: 0px;
+        color: #fff;
+        float: right;
+        padding: 0 10px 0 10px;
+      }
+      .setting-items {
+        border-bottom: 1px #dedede solid;
+        font-family: 'roboto_condensedregular', 'Open Sans', 'Montserrat', HelveticaNeue, 'Helvetica Neue', Helvetica, Arial, sans-serif;
+        padding: 2px 0 2px 0;
+        width: @sidebarWidth - 30px;
+
+        .setting-name {
+          float: left;
+          margin:0 0 0 5px;
+          width: @sidebarWidth - 40px;
+
+          .setting-delete {
+            color: @tcOrange;
+            float:right;
+            padding-left: 5px;
+          }
+          .setting-load {
+            color: @tcBlue;
+            float:right;
+            padding-left: 5px;
+          }
+          .setting-save {
+            color: @tcGreen;
+            float:right;
+            padding-left: 5px;
+          }
+        }
+        .setting-value {
+          float:left;
+          margin:0 0 0 10px;
+          color: @tcOrange;
+          width: @sidebarWidth - 40px;
+        }
+      }
+    }
+  }
+}
+  
+/* Custom for Rest Client */
+.add-header-icon {
+  color: @tcOrange;
+  float: right;
+}
+
+@add-header-height: 100px;
+@add-header-height-closed: 0px;
+.add-header {
+  /* height: @add-header-height; */
+  /* transition: all 300ms ease-out; */
+  // position: relative;
+
+  &.hidden {
+    height: @add-header-height-closed;
+    visibility: hidden;
+  }
+}
