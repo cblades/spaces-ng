@@ -1,8 +1,4 @@
-import {
-    Injectable
-}
-from '@angular/core';
-
+import { Injectable } from '@angular/core';
 import {
     Http,
     QueryEncoder,
@@ -12,10 +8,7 @@ import {
     URLSearchParams
 }
 from '@angular/http';
-
-import {
-    SpacesLoggingService
-} from './spaces_logging.service'
+import { SpacesLoggingService } from './spaces_logging.service';
 
 class SpacesQueryEncoder extends QueryEncoder {
     encodeKey(k: string): string { return encodeURIComponent(k); }
