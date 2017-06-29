@@ -917,23 +917,20 @@ img { max-width: 100%; }
 			<h1 id="spaces-ng">spaces-ng</h1>
 			<p><em>Version: 0.1.0</em></p>
 			<h2 id="spaces-base">Spaces Base</h2>
-			<p>All ThreatConnect&trade; Spaces Apps are provided default parameters via the query parameters of the URI when executed.  The Spaces Base Service provides access to these params via a subscription on the Router params observable.  In order to guarantee the parameters are retrieved before execution of App logic the Spaces Base Class provides the <code>initialize</code> Promise property that will be resovled after the parameters are parsed.</p>
+			<p>All ThreatConnect&trade; Spaces Apps are provided default parameters via the query parameters of the URI when executed.  The Spaces Base Service provides access to these params via a subscription on the Router params observable.  In order to guarantee the parameters are retrieved before execution of App logic Add the SpacesParamsResolve to the routes as shown below.</p>
+			<pre><code class="lang-javascript"><span class="hljs-keyword">const</span> routes: Routes = [{
+    <span class="hljs-attr">path</span>: <span class="hljs-string">''</span>,
+    <span class="hljs-attr">component</span>: MainComponent,
+    <span class="hljs-attr">resolve</span>: {
+        <span class="hljs-attr">params</span>: SpacesParamsResolve
+    }
+}];
+</code></pre>
 			<p>The Spaces Base service provides access to a few <em>key</em> properties that can be access after the service is initialized.  The <code>tcToken</code> property will always provide a current API token (automatic renewal) to use when communicating with the ThreatConnect API.</p>
 			<pre><code class="lang-javascript">ngOnInit() {
-    <span class="hljs-keyword">this</span>.router
-        .routerState
-        .root
-        .queryParams
-        .subscribe(<span class="hljs-function"><span class="hljs-params">params</span> =&gt;</span> {
-            <span class="hljs-comment">/* initialize spaces module with params (only once) */</span>
-            <span class="hljs-keyword">this</span>.spacesBase.init(params);
-
-            <span class="hljs-keyword">this</span>.spacesBase.initialized.then(<span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> {
-                <span class="hljs-comment">/* store app parameters */</span>
-                <span class="hljs-keyword">this</span>.storage.create(<span class="hljs-string">'tcSelectedItem'</span>, <span class="hljs-keyword">this</span>.spacesBase.param(<span class="hljs-string">'tcSelectedItem'</span>));
-                <span class="hljs-keyword">this</span>.storage.create(<span class="hljs-string">'tcType'</span>, <span class="hljs-keyword">this</span>.spacesBase.param(<span class="hljs-string">'tcType'</span>));
-            });
-        });
+    <span class="hljs-comment">/* store app parameters */</span>
+    <span class="hljs-keyword">this</span>.storage.create(<span class="hljs-string">'tcSelectedItem'</span>, <span class="hljs-keyword">this</span>.spacesBase.param(<span class="hljs-string">'tcSelectedItem'</span>));
+    <span class="hljs-keyword">this</span>.storage.create(<span class="hljs-string">'tcType'</span>, <span class="hljs-keyword">this</span>.spacesBase.param(<span class="hljs-string">'tcType'</span>));
 }
 </code></pre>
 			<h2 id="spaces-logging-service">Spaces Logging Service</h2>
@@ -1051,6 +1048,11 @@ public getData(
 			<ul>
 				<li>Initial Release</li>
 			</ul>
+			<h2 id="0-2-0">0.2.0</h2>
+			<ul>
+				<li>Added Resolve to ensure query parameters are available before loading routes.</li>
+				<li>Update SpacesRequestService query parameters (search) due to a change in behavior with ng module.</li>
+			</ul>
 		</div>
 		<div style="position:relative;"><a name="typedoc-main-index" class="tsd-anchor"></a></div>
 		<section class="tsd-panel-group tsd-index-group">
@@ -1063,6 +1065,7 @@ public getData(
 							<li class="tsd-kind-external-module tsd-is-external"><a href="modules/_lib_spaces_base_service_.html" class="tsd-kind-icon">"lib/spaces_<wbr>base.service"</a></li>
 							<li class="tsd-kind-external-module tsd-is-external"><a href="modules/_lib_spaces_logging_service_.html" class="tsd-kind-icon">"lib/spaces_<wbr>logging.service"</a></li>
 							<li class="tsd-kind-external-module tsd-is-external"><a href="modules/_lib_spaces_messages_service_.html" class="tsd-kind-icon">"lib/spaces_<wbr>messages.service"</a></li>
+							<li class="tsd-kind-external-module tsd-is-external"><a href="modules/_lib_spaces_params_resolve_.html" class="tsd-kind-icon">"lib/spaces_<wbr>params.resolve"</a></li>
 							<li class="tsd-kind-external-module tsd-is-external"><a href="modules/_lib_spaces_request_service_.html" class="tsd-kind-icon">"lib/spaces_<wbr>request.service"</a></li>
 							<li class="tsd-kind-external-module tsd-is-external"><a href="modules/_lib_spaces_storage_service_.html" class="tsd-kind-icon">"lib/spaces_<wbr>storage.service"</a></li>
 							<li class="tsd-kind-external-module tsd-is-external"><a href="modules/_lib_spaces_utilities_service_.html" class="tsd-kind-icon">"lib/spaces_<wbr>utilities.service"</a></li>

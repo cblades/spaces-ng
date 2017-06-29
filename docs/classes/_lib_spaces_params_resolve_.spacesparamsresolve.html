@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>spaces-ng | spaces-ng</title>
+	<title>SpacesParamsResolve | spaces-ng</title>
 	<meta name="description" content="">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<style type="text/css">/*! normalize.css v1.1.3 | MIT License | git.io/normalize */
@@ -879,7 +879,7 @@ img { max-width: 100%; }
 		<div class="container">
 			<div class="table-wrap">
 				<div class="table-cell">
-					<strong><a href="index.html">spaces-ng</a></strong>
+					<strong><a href="../index.html">spaces-ng</a></strong>
 				</div>
 				<div class="table-cell" id="tsd-widgets">
 					<div id="tsd-filter">
@@ -909,169 +909,131 @@ img { max-width: 100%; }
 </header>
 <nav class="tsd-navigation secondary">
 	<ul>
+		<li class="current tsd-kind-class tsd-parent-kind-external-module tsd-is-external">
+			<a href="_lib_spaces_params_resolve_.spacesparamsresolve.html" class="tsd-kind-icon">Spaces<wbr>Params<wbr>Resolve</a>
+			<ul>
+				<li class=" tsd-kind-constructor tsd-parent-kind-class tsd-is-external">
+					<a href="_lib_spaces_params_resolve_.spacesparamsresolve.html#constructor" class="tsd-kind-icon">constructor</a>
+				</li>
+				<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-private tsd-is-external">
+					<a href="_lib_spaces_params_resolve_.spacesparamsresolve.html#spacesbase" class="tsd-kind-icon">spaces<wbr>Base</a>
+				</li>
+				<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-external">
+					<a href="_lib_spaces_params_resolve_.spacesparamsresolve.html#resolve" class="tsd-kind-icon">resolve</a>
+				</li>
+			</ul>
+		</li>
 	</ul>
 </nav>
 <div class="container container-main">
 	<div class="content-wrap">
-		<div class="tsd-panel tsd-typography">
-			<h1 id="spaces-ng">spaces-ng</h1>
-			<p><em>Version: 0.1.0</em></p>
-			<h2 id="spaces-base">Spaces Base</h2>
-			<p>All ThreatConnect&trade; Spaces Apps are provided default parameters via the query parameters of the URI when executed.  The Spaces Base Service provides access to these params via a subscription on the Router params observable.  In order to guarantee the parameters are retrieved before execution of App logic Add the SpacesParamsResolve to the routes as shown below.</p>
-			<pre><code class="lang-javascript"><span class="hljs-keyword">const</span> routes: Routes = [{
-    <span class="hljs-attr">path</span>: <span class="hljs-string">''</span>,
-    <span class="hljs-attr">component</span>: MainComponent,
-    <span class="hljs-attr">resolve</span>: {
-        <span class="hljs-attr">params</span>: SpacesParamsResolve
-    }
-}];
-</code></pre>
-			<p>The Spaces Base service provides access to a few <em>key</em> properties that can be access after the service is initialized.  The <code>tcToken</code> property will always provide a current API token (automatic renewal) to use when communicating with the ThreatConnect API.</p>
-			<pre><code class="lang-javascript">ngOnInit() {
-    <span class="hljs-comment">/* store app parameters */</span>
-    <span class="hljs-keyword">this</span>.storage.create(<span class="hljs-string">'tcSelectedItem'</span>, <span class="hljs-keyword">this</span>.spacesBase.param(<span class="hljs-string">'tcSelectedItem'</span>));
-    <span class="hljs-keyword">this</span>.storage.create(<span class="hljs-string">'tcType'</span>, <span class="hljs-keyword">this</span>.spacesBase.param(<span class="hljs-string">'tcType'</span>));
-}
-</code></pre>
-			<h2 id="spaces-logging-service">Spaces Logging Service</h2>
-			<p>The <a href="classes/_lib_spaces_logging_service_.spacesloggingservice.html">Spaces Logging</a> Service provides a wrapper around <code>console.log()</code> with additional features such as Submodule, Method, file and line number detection.  Logging colors to quickly identify which log message comes from which module.  Logging level for the app to allow easy debugging/troubleshooting.</p>
-			<h3 id="supported-logging-levels">Supported Logging Levels</h3>
-			<ul>
-				<li>Critical</li>
-				<li>Error</li>
-				<li>Warn</li>
-				<li>Info</li>
-				<li>Debug</li>
-				<li>Important</li>
+		<section class="tsd-panel tsd-hierarchy">
+			<h3>Hierarchy</h3>
+			<ul class="tsd-hierarchy">
+				<li>
+					<span class="target">SpacesParamsResolve</span>
+				</li>
 			</ul>
-			<h3 id="set-logging-level-and-module-colors">Set Logging Level and Module Colors</h3>
-			<pre><code class="lang-javascript"><span class="hljs-keyword">constructor</span>(
-    private logging: SpacesLoggingService
-) {
-    <span class="hljs-keyword">this</span>.logging.logLevel = <span class="hljs-string">'debug'</span>;  <span class="hljs-comment">// set app default logging level</span>
-    <span class="hljs-keyword">this</span>.logging.moduleColor(<span class="hljs-string">'#633974'</span>, <span class="hljs-string">'#fff'</span>, <span class="hljs-string">'AppComponent'</span>);  <span class="hljs-comment">// set logging console colors</span>
-}
-</code></pre>
-			<h3 id="set-logging-level-colors">Set Logging Level Colors</h3>
-			<pre><code class="lang-javascript"><span class="hljs-keyword">constructor</span>(
-    private logging: SpacesLoggingService
-) {
-    <span class="hljs-keyword">this</span>.logging.logLevel = <span class="hljs-string">'debug'</span>;  <span class="hljs-comment">// set app default logging level</span>
-    <span class="hljs-comment">/* optional set non default colors */</span>
-    <span class="hljs-keyword">this</span>.logging.criticalColor(<span class="hljs-string">'#633974'</span>, <span class="hljs-string">'#fff'</span>);  <span class="hljs-comment">// set logging level console colors</span>
-    <span class="hljs-keyword">this</span>.logging.debugColor(<span class="hljs-string">'#666'</span>, <span class="hljs-string">'#fff'</span>);  <span class="hljs-comment">// set logging level console colors</span>
-    &lt;...snipped&gt;
-}
-</code></pre>
-			<h3 id="disable-logging-colors">Disable logging colors</h3>
-			<pre><code class="lang-javascript"><span class="hljs-keyword">constructor</span>(
-    private logging: SpacesLoggingService
-) {
-    <span class="hljs-keyword">this</span>.logging.logLevel = <span class="hljs-string">'debug'</span>;  <span class="hljs-comment">// set app default logging level</span>
-    <span class="hljs-keyword">this</span>.logging.disableColor();
-}
-</code></pre>
-			<h3 id="example-logging">Example Logging</h3>
-			<pre><code class="lang-javascript">ngOnInit() {
-    <span class="hljs-keyword">this</span>.logging.critical(<span class="hljs-string">'Critial Title'</span>, <span class="hljs-string">'Something failed and can not recover.'</span>)
-    <span class="hljs-keyword">this</span>.logging.error(<span class="hljs-string">'Error Title'</span>, <span class="hljs-string">'Something failed.'</span>)
-    <span class="hljs-keyword">this</span>.logging.warn(<span class="hljs-string">'Warn Title'</span>, <span class="hljs-string">'This probably should not happen.'</span>)
-    <span class="hljs-keyword">this</span>.logging.info(<span class="hljs-string">'Info Title'</span>, <span class="hljs-string">'An informative message.'</span>)
-    <span class="hljs-keyword">this</span>.logging.debug(<span class="hljs-string">'Debug Title'</span>, <span class="hljs-string">'Lots of noise.'</span>)
-    <span class="hljs-keyword">this</span>.logging.important(<span class="hljs-string">'Important Title'</span>, <span class="hljs-string">'Look at me!!!'</span>)
-}
-</code></pre>
-			<h2 id="spaces-messaging">Spaces Messaging</h2>
-			<p>The <a href="classes/_lib_spaces_messages_service_.spacesmessagesservice.html">Spaces Messaging</a> Service provides a wrapper on <a href="http://www.primefaces.org/primeng/#/growl">PrimeNg Growl</a>.  This service allows the App to send a message to the base App Component from any custom compponent.</p>
-			<h3 id="app-component-html">app.component.html</h3>
-			<pre><code class="lang-html"><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"spaces-content"</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">p-growl</span> [<span class="hljs-attr">value</span>]=<span class="hljs-string">"messages.msgs"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">p-growl</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">router-outlet</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">router-outlet</span>&gt;</span>
-<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
-</code></pre>
-			<h3 id="trigger-growl-message-">Trigger Growl message.</h3>
-			<p>From custom component that imports the <code>SpacesMessagesService</code> a Growl messages can be triggered using the examples below.  Or just using <code>this.message.showSuccess()</code>, <code>this.message.showInfo()</code>, <code>this.message.showWarning()</code>, or <code>this.message.showError()</code> directly in any method.</p>
-			<pre><code class="lang-javascript"><span class="hljs-keyword">import</span> {
-    SpacesMessagesService
-}
-<span class="hljs-keyword">from</span> <span class="hljs-string">'spaces-ng/main'</span>;
-
-<span class="hljs-comment">// &lt;snipped...&gt;</span>
-
-<span class="hljs-keyword">constructor</span>(
-    private messages: SpacesMessagesService
-) { <span class="hljs-comment">/* empty block */</span> }
-
-    <span class="hljs-comment">/* example of spaces-ng message feature */</span>
-public errorMessage(msg) {
-    <span class="hljs-keyword">this</span>.messages.showError(<span class="hljs-string">'Error Message'</span>, msg);
-}
-
-<span class="hljs-comment">/* example of spaces-ng message feature */</span>
-public successMessage(msg) {
-    <span class="hljs-keyword">this</span>.messages.showSuccess(<span class="hljs-string">'Success Message'</span>, msg);
-}
-</code></pre>
-			<h2 id="spaces-request">Spaces Request</h2>
-			<p>The <a href="classes/_lib_spaces_request_service_.spacesrequestservice.html">Spaces Request</a> Service provides a wrapper around the <code>@angular/http</code> module to simplify interaction with the ThreatConnect API or any Remote endpoint.  The Spaces Request Service provides easy access to the ThreatConnect API Secury Proxy service.</p>
-			<pre><code class="lang-javascript"><span class="hljs-keyword">import</span> {
-    SpacesRequestService
-}
-<span class="hljs-keyword">from</span> <span class="hljs-string">'spaces-ng/main'</span>;
-<span class="hljs-keyword">import</span> { Observable } <span class="hljs-keyword">from</span> <span class="hljs-string">'rxjs/Rx'</span>;
-
-<span class="hljs-comment">// &lt;snipped...&gt;</span>
-
-<span class="hljs-keyword">constructor</span>(
-    private request: SpacesRequestService
-) { <span class="hljs-comment">/* empty block */</span> }
-
-public getData(
-    apiUser: string,
-    <span class="hljs-attr">apiKey</span>: string
-): Observable&lt;any&gt; {
-    <span class="hljs-keyword">let</span> myRequest = <span class="hljs-keyword">this</span>.request
-        .resetOptions()
-        .proxy(<span class="hljs-literal">true</span>)
-        .url(url)
-        .param(<span class="hljs-string">'api_username'</span>, apiUser)
-        .param(<span class="hljs-string">'api_key'</span>, apiKey)
-        .method(<span class="hljs-string">'GET'</span>);
-
-    <span class="hljs-keyword">return</span> dtRequest.request()
-        .map(<span class="hljs-function"><span class="hljs-params">res</span> =&gt;</span> res.json() || {},
-            <span class="hljs-keyword">this</span>.handleError);
-}
-</code></pre>
-			<h2 id="release-notes">Release Notes</h2>
-			<h2 id="0-1-0">0.1.0</h2>
-			<ul>
-				<li>Initial Release</li>
+		</section>
+		<section class="tsd-panel">
+			<h3>Implements</h3>
+			<ul class="tsd-hierarchy">
+				<li><span class="tsd-signature-type">Resolve</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">&gt;</span></li>
 			</ul>
-			<h2 id="0-2-0">0.2.0</h2>
-			<ul>
-				<li>Added Resolve to ensure query parameters are available before loading routes.</li>
-				<li>Update SpacesRequestService query parameters (search) due to a change in behavior with ng module.</li>
-			</ul>
-		</div>
+		</section>
 		<section class="tsd-panel-group tsd-index-group">
 			<h2>Index</h2>
 			<section class="tsd-panel tsd-index-panel">
 				<div class="tsd-index-content">
-					<section class="tsd-index-section ">
-						<h3>External modules</h3>
+					<section class="tsd-index-section tsd-is-external">
+						<h3>Constructors</h3>
 						<ul class="tsd-index-list">
-							<li class="tsd-kind-external-module tsd-is-external"><a href="modules/_lib_spaces_base_service_.html" class="tsd-kind-icon">"lib/spaces_<wbr>base.service"</a></li>
-							<li class="tsd-kind-external-module tsd-is-external"><a href="modules/_lib_spaces_logging_service_.html" class="tsd-kind-icon">"lib/spaces_<wbr>logging.service"</a></li>
-							<li class="tsd-kind-external-module tsd-is-external"><a href="modules/_lib_spaces_messages_service_.html" class="tsd-kind-icon">"lib/spaces_<wbr>messages.service"</a></li>
-							<li class="tsd-kind-external-module tsd-is-external"><a href="modules/_lib_spaces_params_resolve_.html" class="tsd-kind-icon">"lib/spaces_<wbr>params.resolve"</a></li>
-							<li class="tsd-kind-external-module tsd-is-external"><a href="modules/_lib_spaces_request_service_.html" class="tsd-kind-icon">"lib/spaces_<wbr>request.service"</a></li>
-							<li class="tsd-kind-external-module tsd-is-external"><a href="modules/_lib_spaces_storage_service_.html" class="tsd-kind-icon">"lib/spaces_<wbr>storage.service"</a></li>
-							<li class="tsd-kind-external-module tsd-is-external"><a href="modules/_lib_spaces_utilities_service_.html" class="tsd-kind-icon">"lib/spaces_<wbr>utilities.service"</a></li>
-							<li class="tsd-kind-external-module"><a href="modules/_main_.html" class="tsd-kind-icon">"main"</a></li>
+							<li class="tsd-kind-constructor tsd-parent-kind-class tsd-is-external"><a href="_lib_spaces_params_resolve_.spacesparamsresolve.html#constructor" class="tsd-kind-icon">constructor</a></li>
+						</ul>
+					</section>
+					<section class="tsd-index-section tsd-is-private tsd-is-private-protected tsd-is-external">
+						<h3>Properties</h3>
+						<ul class="tsd-index-list">
+							<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private tsd-is-external"><a href="_lib_spaces_params_resolve_.spacesparamsresolve.html#spacesbase" class="tsd-kind-icon">spaces<wbr>Base</a></li>
+						</ul>
+					</section>
+					<section class="tsd-index-section tsd-is-external">
+						<h3>Methods</h3>
+						<ul class="tsd-index-list">
+							<li class="tsd-kind-method tsd-parent-kind-class tsd-is-external"><a href="_lib_spaces_params_resolve_.spacesparamsresolve.html#resolve" class="tsd-kind-icon">resolve</a></li>
 						</ul>
 					</section>
 				</div>
+			</section>
+		</section>
+		<section class="tsd-panel-group tsd-member-group tsd-is-external">
+			<h2>Constructors</h2>
+			<section class="tsd-panel tsd-member tsd-kind-constructor tsd-parent-kind-class tsd-is-external">
+				<a name="constructor" class="tsd-anchor"></a>
+				<h3>constructor</h3>
+				<ul class="tsd-signatures tsd-kind-constructor tsd-parent-kind-class tsd-is-external">
+					<li class="tsd-signature tsd-kind-icon">new <wbr>Spaces<wbr>Params<wbr>Resolve<span class="tsd-signature-symbol">(</span>spacesBase<span class="tsd-signature-symbol">: </span><a href="_lib_spaces_base_service_.spacesbaseservice.html" class="tsd-signature-type">SpacesBaseService</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="_lib_spaces_params_resolve_.spacesparamsresolve.html" class="tsd-signature-type">SpacesParamsResolve</a></li>
+				</ul>
+				<ul class="tsd-descriptions">
+					<li class="tsd-description">
+						<aside class="tsd-sources">
+							<ul>
+								<li>Defined in <a href="https://github.com/ThreatConnect-Inc/spaces-ng/blob/5869059/lib/spaces_params.resolve.ts#L9">lib/spaces_params.resolve.ts:9</a></li>
+							</ul>
+						</aside>
+						<h4 class="tsd-parameters-title">Parameters</h4>
+						<ul class="tsd-parameters">
+							<li>
+								<h5>spacesBase: <a href="_lib_spaces_base_service_.spacesbaseservice.html" class="tsd-signature-type">SpacesBaseService</a></h5>
+							</li>
+						</ul>
+						<h4 class="tsd-returns-title">Returns <a href="_lib_spaces_params_resolve_.spacesparamsresolve.html" class="tsd-signature-type">SpacesParamsResolve</a></h4>
+					</li>
+				</ul>
+			</section>
+		</section>
+		<section class="tsd-panel-group tsd-member-group tsd-is-private tsd-is-private-protected tsd-is-external">
+			<h2>Properties</h2>
+			<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-private tsd-is-external">
+				<a name="spacesbase" class="tsd-anchor"></a>
+				<h3><span class="tsd-flag ts-flagPrivate">Private</span> spaces<wbr>Base</h3>
+				<div class="tsd-signature tsd-kind-icon">spaces<wbr>Base<span class="tsd-signature-symbol">:</span> <a href="_lib_spaces_base_service_.spacesbaseservice.html" class="tsd-signature-type">SpacesBaseService</a></div>
+				<aside class="tsd-sources">
+					<ul>
+						<li>Defined in <a href="https://github.com/ThreatConnect-Inc/spaces-ng/blob/5869059/lib/spaces_params.resolve.ts#L12">lib/spaces_params.resolve.ts:12</a></li>
+					</ul>
+				</aside>
+			</section>
+		</section>
+		<section class="tsd-panel-group tsd-member-group tsd-is-external">
+			<h2>Methods</h2>
+			<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-external">
+				<a name="resolve" class="tsd-anchor"></a>
+				<h3>resolve</h3>
+				<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-external">
+					<li class="tsd-signature tsd-kind-icon">resolve<span class="tsd-signature-symbol">(</span>route<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">ActivatedRouteSnapshot</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">object</span></li>
+				</ul>
+				<ul class="tsd-descriptions">
+					<li class="tsd-description">
+						<aside class="tsd-sources">
+							<ul>
+								<li>Defined in <a href="https://github.com/ThreatConnect-Inc/spaces-ng/blob/5869059/lib/spaces_params.resolve.ts#L17">lib/spaces_params.resolve.ts:17</a></li>
+							</ul>
+						</aside>
+						<h4 class="tsd-parameters-title">Parameters</h4>
+						<ul class="tsd-parameters">
+							<li>
+								<h5>route: <span class="tsd-signature-type">ActivatedRouteSnapshot</span></h5>
+							</li>
+						</ul>
+						<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">object</span></h4>
+						<ul class="tsd-parameters">
+							<li class="tsd-parameter-index-signature">
+								<h5><span class="tsd-signature-symbol">[</span>key: <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">]: </span><span class="tsd-signature-type">any</span></h5>
+							</li>
+						</ul>
+					</li>
+				</ul>
 			</section>
 		</section>
 		<footer class="with-border-bottom">

@@ -2,26 +2,25 @@
 *Version: 0.1.0*
 
 ## Spaces Base
-All ThreatConnect&trade; Spaces Apps are provided default parameters via the query parameters of the URI when executed.  The Spaces Base Service provides access to these params via a subscription on the Router params observable.  In order to guarantee the parameters are retrieved before execution of App logic the Spaces Base Class provides the `initialize` Promise property that will be resovled after the parameters are parsed.
+All ThreatConnect&trade; Spaces Apps are provided default parameters via the query parameters of the URI when executed.  The Spaces Base Service provides access to these params via a subscription on the Router params observable.  In order to guarantee the parameters are retrieved before execution of App logic Add the SpacesParamsResolve to the routes as shown below.
+
+```javascript
+const routes: Routes = [{
+    path: '',
+    component: MainComponent,
+    resolve: {
+        params: SpacesParamsResolve
+    }
+}];
+```
 
 The Spaces Base service provides access to a few *key* properties that can be access after the service is initialized.  The `tcToken` property will always provide a current API token (automatic renewal) to use when communicating with the ThreatConnect API.
 
 ```javascript
 ngOnInit() {
-    this.router
-        .routerState
-        .root
-        .queryParams
-        .subscribe(params => {
-            /* initialize spaces module with params (only once) */
-            this.spacesBase.init(params);
-
-            this.spacesBase.initialized.then(() => {
-                /* store app parameters */
-                this.storage.create('tcSelectedItem', this.spacesBase.param('tcSelectedItem'));
-                this.storage.create('tcType', this.spacesBase.param('tcType'));
-            });
-        });
+    /* store app parameters */
+    this.storage.create('tcSelectedItem', this.spacesBase.param('tcSelectedItem'));
+    this.storage.create('tcType', this.spacesBase.param('tcType'));
 }
 ```
 
@@ -161,3 +160,7 @@ public getData(
 
 ## 0.1.0
 + Initial Release
+
+## 0.2.0
++ Added Resolve to ensure query parameters are available before loading routes.
++ Update SpacesRequestService query parameters (search) due to a change in behavior with ng module.
