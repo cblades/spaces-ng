@@ -231,7 +231,10 @@ export class SpacesRequestService {
         let params = new URLSearchParams();
         params.set('_targetUrl', this.requestUrl);
         params.appendAll(this.params);
-        this.params.replaceAll(params);
+        this.options.search = params;
+        
+        // not sure why, but this broke after upgrade. replaced with above ^
+        // this.params.replaceAll(params);
         
         if (this.spacesBase.tcProxyServer) {
             this.requestUrl = this.spacesBase.tcProxyServer + '/secureProxy';
