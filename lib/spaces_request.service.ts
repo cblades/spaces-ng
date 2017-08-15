@@ -286,7 +286,7 @@ export class SpacesRequestService {
         this.logging.info('resetOptions', 'resetOptions');
         this.headers = new Headers();
         this.headers.set('Accept', 'application/json');
-        this.params = new URLSearchParams('', new SpacesQueryEncoder());
+        this.params = new URLSearchParams('', new SpacesQueryEncoder(this.logging));
         this.useProxy = false;
         this.options = new RequestOptions({
             headers: this.headers,
