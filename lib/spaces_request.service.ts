@@ -264,6 +264,9 @@ export class SpacesRequestService {
         this.logging.debug('this.options', this.options);
         this.logging.debug('this.useProxy', this.useProxy);
 
+        this.options.params = this.params;
+        this.options.headers = this.headers;
+
         if (this.useProxy) { this.proxyUrl(); }
         return this.http.request(this.requestUrl, this.options)
             .map(
