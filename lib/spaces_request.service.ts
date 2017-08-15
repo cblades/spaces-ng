@@ -33,7 +33,7 @@ export class SpacesRequestService {
     private options = new RequestOptions({
         headers: this.headers,
         method: RequestMethod.Get,
-        search: this.params
+        params: this.params
     });
     private useProxy: boolean;
     private requestUrl: string;
