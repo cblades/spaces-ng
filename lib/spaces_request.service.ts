@@ -3,7 +3,6 @@ import {
     Headers,
     Http,
     QueryEncoder,
-    Request,
     RequestMethod,
     RequestOptions,
     Response,
@@ -17,8 +16,18 @@ import { SpacesLoggingService } from './spaces_logging.service';
 
 
 class SpacesQueryEncoder extends QueryEncoder {
-    encodeKey(k: string): string { return encodeURIComponent(k); }
-    encodeValue(v: string): string { return encodeURIComponent(v); }
+    constructor(private logging: SpacesLoggingService) {
+        super();
+    }
+
+    encodeKey(k: string): string {
+        this.logging.info('Query Encoder', `Got key ${k}`);
+        return encodeURIComponent(k);
+    }
+    encodeValue(v: string): string {
+        this.logging.info('Query Encoder', `Got value ${v}`);
+        return encodeURIComponent(v);
+    }
 }
 
 
@@ -29,11 +38,11 @@ export class SpacesRequestService {
      */
 
     private headers = new Headers();
-    private params = new URLSearchParams('', new SpacesQueryEncoder());  // must be above options
+    private params = new URLSearchParams('', new SpacesQueryEncoder(this.logging));  // must be above options
     private options = new RequestOptions({
         headers: this.headers,
         method: RequestMethod.Get,
-        search: this.params
+        params: this.params
     });
     private useProxy: boolean;
     private requestUrl: string;
@@ -255,6 +264,9 @@ export class SpacesRequestService {
         this.logging.debug('this.options', this.options);
         this.logging.debug('this.useProxy', this.useProxy);
 
+        this.options.params = this.params;
+        this.options.headers = this.headers;
+
         if (this.useProxy) { this.proxyUrl(); }
         return this.http.request(this.requestUrl, this.options)
             .map(
@@ -277,7 +289,7 @@ export class SpacesRequestService {
         this.logging.info('resetOptions', 'resetOptions');
         this.headers = new Headers();
         this.headers.set('Accept', 'application/json');
-        this.params = new URLSearchParams('', new SpacesQueryEncoder());
+        this.params = new URLSearchParams('', new SpacesQueryEncoder(this.logging));
         this.useProxy = false;
         this.options = new RequestOptions({
             headers: this.headers,
