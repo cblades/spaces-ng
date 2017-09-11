@@ -48,7 +48,7 @@
     "typescript": "2.1.5",
     "zone.js": "^0.7.2"
   },
-  "homepage": "https://bitbucket.org/threatconnectinc/spaces-ng",
+  "homepage": "https://github.com/Threatconnect-Inc/spaces-ng",
   "keywords": [
     "ThreatConnect",
     "Spaces",
@@ -72,8 +72,8 @@
   "readme": "",
   "repository": {
     "type": "git",
-    "url": "git@bitbucket.org:threatconnectinc/spaces-ng.git"
+    "url": "git@github.com:Threatconnect-Inc/spaces-ng.git"
   },
   "typings": "dist/main.d.ts",
-  "version": "0.3.0"
+  "version": "0.3.1"
 }
