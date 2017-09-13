@@ -25,15 +25,4 @@ import { BowserModule } from 'ngx-bowser';
         SpacesUtilityService,
     ]
 })
-class SpacesModule { }
-
-export {
-    SpacesBaseService,
-    SpacesLoggingService,
-    SpacesMessagesService,
-    SpacesParamsResolve,
-    SpacesRequestService,
-    SpacesStorageService,
-    SpacesUtilityService,
-    SpacesModule,
-}
+export class SpacesModule { }
