@@ -15,10 +15,10 @@
       "name": "Chris Blades"
     }
   ],
-  "dependencies": {
+  "peerDependencies": {
     "ngx-bowser": "^0.1.0",
-    "primeng": "2.0.0",
-    "primeui": "^4.1.15"
+    "primeng": "*",
+    "primeui": "*"
   },
   "description": "Base Module for ThreatConnect Spaces Apps.",
   "devDependencies": {
@@ -68,15 +68,10 @@
   ],
   "name": "spaces-ng",
   "optionalDependencies": {},
-  "peerDependencies": {},
   "readme": "",
   "repository": {
     "type": "git",
     "url": "git@bitbucket.org:threatconnectinc/spaces-ng.git"
-  },
-  "scripts": {
-    "install": "tsc",
-    "test": "npm test"
   },
   "typings": "dist/main.d.ts",
   "version": "0.2.0"
